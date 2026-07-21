@@ -257,7 +257,10 @@ export function ChatModePanel({ onSwitchToVoice }: Props) {
     <div className="flex-1 min-h-0 flex bg-white">
       {/* History sidebar */}
       {sidebarOpen && (
-        <aside className="w-[260px] shrink-0 border-r border-gray-200 bg-[#f7f7f8] flex flex-col">
+        <aside
+          className="w-[260px] shrink-0 border-r border-gray-200 bg-[#f7f7f8] flex flex-col"
+          data-tour="jarvis-sidebar"
+        >
           <div className="p-3 space-y-2">
             <button
               type="button"
@@ -516,6 +519,7 @@ function Composer({
 }) {
   return (
     <form
+      data-tour="jarvis-composer"
       className="w-full max-w-2xl mx-auto"
       onSubmit={(e) => {
         e.preventDefault()

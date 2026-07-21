@@ -6,11 +6,23 @@ type PageHeaderProps = {
   subtitle: string
   onRefresh?: () => void
   children?: React.ReactNode
+  /** Optional onboarding tour anchor, e.g. "overtime-header" */
+  tourId?: string
 }
 
-export function PageHeader({ icon, title, subtitle, onRefresh, children }: PageHeaderProps) {
+export function PageHeader({
+  icon,
+  title,
+  subtitle,
+  onRefresh,
+  children,
+  tourId,
+}: PageHeaderProps) {
   return (
-    <header className="flex items-center justify-between px-6 py-4 bg-white border-b border-gray-200">
+    <header
+      className="flex items-center justify-between px-6 py-4 bg-white border-b border-gray-200"
+      {...(tourId ? { 'data-tour': tourId } : {})}
+    >
       <div className="flex items-center gap-3">
         <div className="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center">
           {icon}

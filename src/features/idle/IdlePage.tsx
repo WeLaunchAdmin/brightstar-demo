@@ -80,6 +80,7 @@ export function IdlePage() {
         title="Idle Monitoring"
         subtitle={`Detects engine-on idling ≥ 8 minutes during 8 AM–1 AM ET for ${monitoredCount} monitored technicians.`}
         onRefresh={() => setRefreshKey((k) => k + 1)}
+        tourId="idle-header"
       >
         <button
           type="button"
@@ -90,12 +91,14 @@ export function IdlePage() {
         </button>
       </PageHeader>
 
-      <div className="px-6 py-3 bg-white border-b border-gray-200">
+      <div className="px-6 py-3 bg-white border-b border-gray-200" data-tour="idle-tabs">
         <TabBar tabs={tabs} activeTab={activeTab} onChange={setActiveTab} />
       </div>
 
-      {activeTab === 'monitored' && <MonitoredTechniciansTab key={refreshKey} />}
-      {activeTab === 'alerts' && <IdleAlertsTab key={refreshKey} />}
+      <div className="flex-1 min-h-0" data-tour="idle-body">
+        {activeTab === 'monitored' && <MonitoredTechniciansTab key={refreshKey} />}
+        {activeTab === 'alerts' && <IdleAlertsTab key={refreshKey} />}
+      </div>
     </div>
   )
 }

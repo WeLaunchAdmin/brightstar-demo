@@ -21,14 +21,17 @@ export function OvertimePage() {
         title="Overtime"
         subtitle="Fleet week table from site-punch rules, plus single-tech day GPS and evidence."
         onRefresh={() => setRefreshKey((k) => k + 1)}
+        tourId="overtime-header"
       />
 
-      <div className="px-6 py-3 bg-white border-b border-gray-200">
+      <div className="px-6 py-3 bg-white border-b border-gray-200" data-tour="overtime-tabs">
         <TabBar tabs={TABS} activeTab={activeTab} onChange={setActiveTab} />
       </div>
 
-      {activeTab === 'fleet' && <FleetHoursTab key={refreshKey} />}
-      {activeTab === 'day' && <DayAnalysisTab />}
+      <div className="flex-1 min-h-0" data-tour="overtime-body">
+        {activeTab === 'fleet' && <FleetHoursTab key={refreshKey} />}
+        {activeTab === 'day' && <DayAnalysisTab />}
+      </div>
     </div>
   )
 }

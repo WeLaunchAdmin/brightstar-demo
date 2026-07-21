@@ -33,6 +33,7 @@ export function CheckoutPage() {
         title="Checkout Compliance"
         subtitle="Checkout Monitor is watching today's check-ins — tiered alerts at 0.5, 1, and 2 mi past the on-site zone until BrightStar Field check-out."
         onRefresh={() => setRefreshKey((k) => k + 1)}
+        tourId="checkout-header"
       >
         {activeTab === 'alerts' && (
           <button
@@ -45,12 +46,14 @@ export function CheckoutPage() {
         )}
       </PageHeader>
 
-      <div className="px-6 py-3 bg-white border-b border-gray-200">
+      <div className="px-6 py-3 bg-white border-b border-gray-200" data-tour="checkout-tabs">
         <TabBar tabs={tabs} activeTab={activeTab} onChange={setActiveTab} />
       </div>
 
-      {activeTab === 'watches' && <ActiveWatchesTab key={refreshKey} />}
-      {activeTab === 'alerts' && <AlertsTab key={refreshKey} />}
+      <div className="flex-1 min-h-0" data-tour="checkout-body">
+        {activeTab === 'watches' && <ActiveWatchesTab key={refreshKey} />}
+        {activeTab === 'alerts' && <AlertsTab key={refreshKey} />}
+      </div>
     </div>
   )
 }

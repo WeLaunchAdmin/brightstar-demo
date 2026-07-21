@@ -51,7 +51,7 @@ function JarvisShell() {
   )
 
   return (
-    <div className="relative flex-1 min-h-0 flex flex-col bg-white">
+    <div className="relative flex-1 min-h-0 flex flex-col bg-white" data-tour="jarvis-shell">
       {mode === 'chat' ? (
         <ChatModePanel onSwitchToVoice={() => switchMode('voice')} />
       ) : (

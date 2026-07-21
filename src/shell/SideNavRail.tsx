@@ -1,4 +1,6 @@
 import { NavLink, useLocation } from 'react-router-dom'
+import { HelpMenu } from '../onboarding/HelpMenu'
+import { showHelpToast } from '../onboarding/helpToast'
 
 type NavItem = {
   to: string
@@ -56,11 +58,7 @@ const navItems: NavItem[] = [
   },
 ]
 
-type SideNavRailProps = {
-  onHelp?: () => void
-}
-
-export function SideNavRail({ onHelp }: SideNavRailProps) {
+export function SideNavRail() {
   const location = useLocation()
 
   return (
@@ -78,7 +76,7 @@ export function SideNavRail({ onHelp }: SideNavRailProps) {
             key={item.to}
             to={item.to}
             title={item.label}
-            data-tour={item.tourId}
+            {...(item.tourId ? { 'data-tour': item.tourId } : {})}
             className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${
               isActive
                 ? 'bg-indigo-600 text-white shadow-sm'
@@ -91,15 +89,7 @@ export function SideNavRail({ onHelp }: SideNavRailProps) {
       })}
 
       <div className="mt-auto flex flex-col items-center gap-2 pb-1">
-        <button
-          type="button"
-          onClick={onHelp}
-          title="Take a tour"
-          aria-label="Take a tour"
-          className="w-10 h-10 rounded-xl flex items-center justify-center text-gray-500 hover:bg-gray-100 hover:text-gray-800 border border-transparent hover:border-gray-200 text-sm font-bold"
-        >
-          ?
-        </button>
+        <HelpMenu onToast={showHelpToast} />
       </div>
     </nav>
   )
