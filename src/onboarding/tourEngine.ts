@@ -11,6 +11,16 @@ import { markPageTourSeen, markPlatformTourSeen } from './storage'
 
 let activeDriver: ReturnType<typeof driver> | null = null
 
+/** Pathname relative to Vite/React Router base (strips `/brightstar/demo`). */
+function appPathname(): string {
+  const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '')
+  let path = window.location.pathname
+  if (base && (path === base || path.startsWith(`${base}/`))) {
+    path = path.slice(base.length) || '/'
+  }
+  return path.startsWith('/') ? path : `/${path}`
+}
+
 export function destroyActiveTour(): void {
   try {
     activeDriver?.destroy()
@@ -104,7 +114,7 @@ export async function runPageTour(
   const markSeen = options?.markSeen !== false
   destroyActiveTour()
 
-  if (window.location.pathname !== tour.route) {
+  if (appPathname() !== tour.route) {
     navigate(tour.route)
   }
 
@@ -213,7 +223,7 @@ export async function runPlatformOverview(
   let i = 0
   while (i < PLATFORM_OVERVIEW_STEPS.length) {
     const step = PLATFORM_OVERVIEW_STEPS[i]
-    if (step.route && window.location.pathname !== step.route) {
+    if (step.route && appPathname() !== step.route) {
       navigate(step.route)
     }
     if (step.selector) {

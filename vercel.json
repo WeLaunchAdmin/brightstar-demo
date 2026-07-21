@@ -1,3 +1,20 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "rewrites": [
+    {
+      "source": "/brightstar/demo/assets/:path*",
+      "destination": "/assets/:path*"
+    },
+    {
+      "source": "/brightstar/demo/:file(.*\\..*)",
+      "destination": "/:file"
+    },
+    {
+      "source": "/brightstar/demo",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/brightstar/demo/(.*)",
+      "destination": "/index.html"
+    }
+  ]
 }

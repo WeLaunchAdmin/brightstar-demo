@@ -6,20 +6,23 @@ import { CheckoutPage } from '../features/checkout/CheckoutPage'
 import { IdlePage } from '../features/idle/IdlePage'
 import { ChatPage } from '../features/chat/ChatPage'
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <AppShell />,
-    children: [
-      { index: true, element: <Navigate to="/supervisor/dispatch" replace /> },
-      { path: 'supervisor/dispatch', element: <DispatchPage /> },
-      { path: 'supervisor/overtime', element: <OvertimePage /> },
-      { path: 'supervisor/checkout', element: <CheckoutPage /> },
-      { path: 'supervisor/idle', element: <IdlePage /> },
-      { path: 'supervisor/chat', element: <ChatPage /> },
-    ],
-  },
-])
+const router = createBrowserRouter(
+  [
+    {
+      path: '/',
+      element: <AppShell />,
+      children: [
+        { index: true, element: <Navigate to="/supervisor/dispatch" replace /> },
+        { path: 'supervisor/dispatch', element: <DispatchPage /> },
+        { path: 'supervisor/overtime', element: <OvertimePage /> },
+        { path: 'supervisor/checkout', element: <CheckoutPage /> },
+        { path: 'supervisor/idle', element: <IdlePage /> },
+        { path: 'supervisor/chat', element: <ChatPage /> },
+      ],
+    },
+  ],
+  { basename: '/brightstar/demo' },
+)
 
 export function AppRouter() {
   return <RouterProvider router={router} />

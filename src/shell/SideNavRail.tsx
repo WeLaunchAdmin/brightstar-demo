@@ -57,7 +57,7 @@ export function SideNavRail() {
     >
       <div className="w-10 h-10 rounded-xl overflow-hidden bg-white border border-gray-200 shadow-sm mb-4 flex items-center justify-center">
         <img
-          src="/facility19-logo.jpeg"
+          src={`${import.meta.env.BASE_URL}facility19-logo.jpeg`}
           alt=""
           width={40}
           height={40}
