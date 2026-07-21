@@ -1,0 +1,23 @@
+---
+description: BrightStar demo branding, naming, and rebrand rules
+alwaysApply: true
+---
+This is a BrightStar demo with 100% dummy data. Enforce:
+
+BANNED — must never appear in UI, routes, filenames, identifiers, comments, or env vars:
+- "Rael" (any form). "Rael Redi" -> "BrightStar Field". "Rael technicians" -> "technicians".
+- "Adam" -> feature is just "Overtime" / "site-punch rules" (no persona).
+- "Ava" -> "Evidence Analyst" (role label only).
+- "Molly" -> "Checkout Monitor".
+- "IntelliShift" -> "Fleet GPS".
+- "n8n" -> "alerts pipeline".
+Keep "Jarvis" as the assistant name.
+
+NAMING:
+- Dispatch board references jobs by WO ID only (e.g. #277872) — no person names on pins/cards.
+- Overtime / Idle / Checkout tabs use dummy human names (John Doe style) on rows.
+- Asset IDs (#222894, MM2045) and WO IDs are fine to keep as dummy references.
+
+MAPS: Mapbox via react-map-gl/mapbox (mapbox-gl v3). Never Leaflet. One shared <FleetMap>.
+
+SCOPE: Build Dispatch, Overtime, Checkout first. Idle Monitoring is a stretch tab, build last.

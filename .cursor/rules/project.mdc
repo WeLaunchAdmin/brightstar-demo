@@ -1,0 +1,16 @@
+---
+description: BrightStar demo project conventions
+alwaysApply: true
+---
+This is a DEMO for a company called BrightStar. It simulates the Rael/Facility19
+"Daily Dispatch", "Jarvis voice agent", and "Rael Pro Chat" features using MOCK DATA only.
+- No Supabase, no OpenRouter, no MCP. All data comes from /src/mock.
+- Rename all user-facing product/company references to "BrightStar".
+- Stack: Vite + React + TS + Tailwind + react-leaflet + Zustand + @elevenlabs/react.
+- Functional components, named exports, TS strict mode.
+- Full feature specs are in @docs/daily-dispatch-feature.md and @docs/jarvis-rael-chat.md.
+- Jarvis/Rael are READ-ONLY: they inform, they never assign/dispatch/write.
+-Rebrand ban rule — list every string in the table above with its replacement; "the word 'Rael' must never appear in UI, routes, filenames, identifiers, comments, or env vars."
+-Naming rule — "Dispatch board references jobs by WO ID only. Analytics tabs (overtime/idle/checkout) key rows on asset ID (e.g. 
+#222894 / MM2045), not person names." (see decision below)
+-Map rule — Mapbox via react-map-gl/mapbox, never Leaflet; one shared <FleetMap>.
